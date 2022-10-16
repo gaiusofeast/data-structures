@@ -1,0 +1,111 @@
+#include <stdio.h>
+
+#define ROW 3 // number of rows in array
+
+#define COL 3 // number of col in array
+
+#define TOTAL_CELLS (ROW * COL) //totall cells in array
+
+int main(void)
+
+{
+//1d array 
+int ajData[4]={3,5,8};
+int *pjData=NULL;
+int hex1;
+int e;
+int f;
+int g;
+int h;
+int i;
+int j;
+int hex2;
+int hex3;
+int l=0;
+int k;
+int z;
+int d;
+int s=0;
+pjData=&pjData[0];
+for(int i=0;i<3;i++)
+printf("array elements =%p\n",(pjData+i));
+printf("enter your base adresss");
+scanf("%x",&hex1);
+printf("enter the elements whose adress has to be calculated");
+scanf("%d",&e);
+
+printf("adress is %p\n",hex1+e*4);
+
+
+// 2d array
+
+int aiData [ROW][COL] = { { 9, 6, 1 }, { 144, 70, 50 }, {10, 12, 78} };
+
+int *piData = NULL; //pointer to integer
+
+int arrayIndex = 0; //variable for array index
+
+piData = &aiData[0][0]; //You can also write *aiData
+
+for (i = 0; i<3 ; ++i) //Loop of row
+
+{
+for (j=0;j<3;j++)
+{
+
+printf(" aiData[%d][%d] %p\n",i,j, (piData + arrayIndex ));
+arrayIndex=arrayIndex+1;
+}
+}
+
+
+printf("enter your base adresss");
+scanf("%x",&hex2);
+
+
+printf("enter the elements whose adress has to be calculated");
+scanf("%d",&f);
+scanf("%d",&g);
+
+printf("adress is %p",hex2+((f-0)*(3)+(g-0))*4);
+
+// 3d array 
+int test[2][3][4] = {
+    {{3, 4, 2, 3}, {0, -3, 9, 11}, {23, 12, 23, 2}},
+    {{13, 4, 56, 3}, {5, 9, 3, 5}, {3, 1, 4, 9}}};
+
+int *pkdata = NULL; //pointer to integer
+
+//int arrayIndex = 0; //variable for array index
+
+pkdata = &test[0][0][0]; //You can also write *aiData
+
+for (i= 0; i<2; ++i) //Loop of row
+
+{
+for (d = 0; d<3; ++d)
+{
+for (s = 0; s<4; ++s)
+{
+printf(" test[%d][%d][%d] = %p\n",i,d,s,(pkdata +l ));
+l=l+1;
+
+}
+}
+}
+printf("gjd");
+scanf("%x",&hex3);
+
+
+printf("enter the elements whose adress has to be calculated");
+scanf("%d",&h);
+scanf("%d",&i);
+scanf("%d",&j);
+
+
+printf("adress is %p",hex3+((h-0)*(3)*(4)+(i-0)*(4)+(j-0))*4);
+
+
+return 0;
+
+}
