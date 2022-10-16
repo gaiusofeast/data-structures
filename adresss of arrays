@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<conio.h>
 
 #define ROW 3 // number of rows in array
 
@@ -9,9 +10,19 @@
 int main(void)
 
 {
-//1d array 
+//1d array
 int ajData[4]={3,5,8};
 int *pjData=NULL;
+int aiData [ROW][COL] = { { 9, 6, 1 }, { 144, 70, 50 }, {10, 12, 78} };
+int test[2][3][4] = {
+    {{3, 4, 2, 3}, {0, -3, 9, 11}, {23, 12, 23, 2}},
+   {{13, 4, 56, 3}, {5, 9, 3, 5}, {3, 1, 4, 9}}};
+
+int *pkdata = NULL; //pointer to integer
+
+int *piData = NULL; //pointer to integer
+
+int arrayIndex = 0; //variable for array index
 int hex1;
 int e;
 int f;
@@ -26,24 +37,25 @@ int k;
 int z;
 int d;
 int s=0;
+clrscr();
 pjData=&pjData[0];
-for(int i=0;i<3;i++)
+for(i=0;i<3;i++)
 printf("array elements =%p\n",(pjData+i));
 printf("enter your base adresss");
 scanf("%x",&hex1);
 printf("enter the elements whose adress has to be calculated");
 scanf("%d",&e);
 
-printf("adress is %p\n",hex1+e*4);
+printf("adress is %p\n",hex1+e*2);
 
 
 // 2d array
 
-int aiData [ROW][COL] = { { 9, 6, 1 }, { 144, 70, 50 }, {10, 12, 78} };
+//int aiData [ROW][COL] = { { 9, 6, 1 }, { 144, 70, 50 }, {10, 12, 78} };
 
-int *piData = NULL; //pointer to integer
+//int *piData = NULL; //pointer to integer
 
-int arrayIndex = 0; //variable for array index
+//int arrayIndex = 0; //variable for array index
 
 piData = &aiData[0][0]; //You can also write *aiData
 
@@ -67,14 +79,14 @@ printf("enter the elements whose adress has to be calculated");
 scanf("%d",&f);
 scanf("%d",&g);
 
-printf("adress is %p",hex2+((f-0)*(3)+(g-0))*4);
+printf("adress is %p",hex2+((f-0)*(3)+(g-0))*2);
 
-// 3d array 
-int test[2][3][4] = {
-    {{3, 4, 2, 3}, {0, -3, 9, 11}, {23, 12, 23, 2}},
-    {{13, 4, 56, 3}, {5, 9, 3, 5}, {3, 1, 4, 9}}};
+// 3d array
+//int test[2][3][4] = {
+  //  {{3, 4, 2, 3}, {0, -3, 9, 11}, {23, 12, 23, 2}},
+   // {{13, 4, 56, 3}, {5, 9, 3, 5}, {3, 1, 4, 9}}};
 
-int *pkdata = NULL; //pointer to integer
+//int *pkdata = NULL; //pointer to integer
 
 //int arrayIndex = 0; //variable for array index
 
@@ -93,7 +105,7 @@ l=l+1;
 }
 }
 }
-printf("gjd");
+printf("enter the base adress");
 scanf("%x",&hex3);
 
 
@@ -103,9 +115,9 @@ scanf("%d",&i);
 scanf("%d",&j);
 
 
-printf("adress is %p",hex3+((h-0)*(3)*(4)+(i-0)*(4)+(j-0))*4);
+printf("adress is %p",hex3+((h-0)*(3)*(4)+(i-0)*(4)+(j-0))*2);
 
-
+getch();
 return 0;
 
 }
