@@ -1,0 +1,135 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Term {
+    int coeff;
+    int exp1;
+    int exp2;
+};
+
+struct Poly {
+    int n;
+    struct Term *terms;
+};
+
+
+void create(struct Poly *p) {
+    int i;
+    printf("Number of terms?");
+    scanf("%d",&p->n);
+    p->terms=(struct Term*)malloc(p->n*sizeof(struct Term));
+
+
+    printf("Enter terms\n");
+    for(i=0; i<p->n; i++)
+        scanf("%d%d%d",&p->terms[i].coeff,&p->terms[i].exp1,&p->terms[i].exp2);
+
+
+}
+
+
+void display(struct Poly p) {
+    int i;
+    for(i=0; i<p.n; i++)
+
+
+        printf("%dx%dy%d+",p.terms[i].coeff,p.terms[i].exp1,p.terms[i].exp2);
+    printf("\n");
+}
+struct Poly *add(struct Poly *p1,struct Poly *p2) {
+    int i,j,k;
+    struct Poly *sum;
+
+
+    sum=(struct Poly*)malloc(sizeof(struct Poly));
+    sum->terms=(struct Term *)malloc((p1->n+p2->n)*sizeof(struct Term));
+    i=j=k=0;
+
+
+    while(i<p1->n && j<p2->n) {
+        if(p1->terms[i].exp1>p2->terms[j].exp1) sum->terms[k++]=p1->terms[i++];
+        else if(p1->terms[i].exp1 <p2->terms[j].exp1) sum->terms[k++]=p2->terms[j++];
+        else if(p1->terms[i].exp2 > p2->terms[j].exp2) sum->terms[k++]=p1->terms[i++];
+        else if(p1->terms[i].exp2 < p2->terms[j].exp2) sum->terms[k++]=p2->terms[j++];
+        else {
+            sum->terms[k].exp1=p1->terms[i].exp1;
+            sum->terms[k].exp2=p1->terms[i].exp2;
+            sum->terms[k++].coeff=p1->terms[i++].coeff+p2->terms[j++].coeff;
+        }
+    }
+    for(; i<p1->n; i++)sum->terms[k++]=p1->terms[i];
+    for(; j<p2->n; j++)sum->terms[k++]=p2->terms[j];
+
+
+    sum->n=k;
+    return sum;
+}    
+// polynomial subtraCtion    
+    struct Poly *add1(struct Poly *p1,struct Poly *p2) {
+    int i,j,k;
+    struct Poly *sum1;
+
+
+    sum1=(struct Poly*)malloc(sizeof(struct Poly));
+    sum1->terms=(struct Term *)malloc((p1->n+p2->n)*sizeof(struct Term));
+    i=j=k=0;
+
+
+    while(i<p1->n && j<p2->n) {
+        if(p1->terms[i].exp1>p2->terms[j].exp1) sum1->terms[k++]=p1->terms[i++];
+        else if(p1->terms[i].exp1 <p2->terms[j].exp1) {sum1->terms[k].exp1=p2->terms[j].exp1;
+        sum1->terms[k].exp2=p2->terms[j].exp2;
+        sum1->terms[k++].coeff=-p2->terms[j++].coeff;
+        }
+        else if(p1->terms[i].exp2 > p2->terms[j].exp2) sum1->terms[k++]=p1->terms[i++];
+        else if(p1->terms[i].exp2 < p2->terms[j].exp2) 
+        {sum1->terms[k].exp1=p2->terms[j].exp1;
+        sum1->terms[k].exp2=p2->terms[j].exp2;
+        sum1->terms[k++].coeff=-p2->terms[j++].coeff;
+        }
+        else {
+            sum1->terms[k].exp1=p1->terms[i].exp1;
+            sum1->terms[k].exp2=p1->terms[i].exp2;
+            sum1->terms[k++].coeff=p1->terms[i++].coeff-p2->terms[j++].coeff;
+        }
+    }
+    for(; i<p1->n; i++)sum1->terms[k++]=p1->terms[i];
+    for(; j<p2->n; j++)sum1->terms[k++]=p2->terms[j];
+
+
+    sum1->n=k;
+    return sum1;
+
+
+
+}
+
+
+int main() {
+    struct Poly p1,p2,*p3,*p4;
+
+
+    create(&p1);
+    create(&p2);
+
+
+    p3=add(&p1,&p2);
+    p4=add1(&p1,&p2);
+
+
+    printf("\n");
+    display(p1);
+    printf("\n");
+    display(p2);
+    printf("\n");
+    printf("polynomial addition ");
+    display(*p3);
+     printf("\n");
+    printf("polynomia subtraction");
+    display(*p4);
+
+
+
+    return 0;
+}
