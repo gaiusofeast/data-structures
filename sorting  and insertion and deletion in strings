@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+   int i,j,count,pos=-1;
+   char str[25][25],temp[25];
+   char delete[50],delete1[50],delete2[50];
+ char emp[20]="";
+puts("How many strings u are going to enter?: ");
+   scanf("%d",&count);
+
+   puts("Enter Strings one by one: ");
+   for(i=0;i<=count;i++)
+      gets(str[i]);
+   for(i=0;i<=count;i++)
+      for(j=i+1;j<=count;j++){
+         if(strcmp(str[i],str[j])>0){
+            strcpy(temp,str[i]);
+            strcpy(str[i],str[j]);
+            strcpy(str[j],temp);
+         }
+      }
+   printf("Order of Sorted Strings:");
+   for(i=0;i<=count;i++)
+      puts(str[i]);
+    
+   
+   printf("enter strings you want to delete");
+   gets(delete);
+   for(i=0;i<=count;i++){
+   if(strcmp(str[i],delete)==0){
+    pos=i;
+    break;
+   }
+}
+
+for(int k=pos;k<=count-1;k++)
+  strcpy(str[k],str[k+1]);
+  strcpy(str[count],emp);
+printf("Order of Sorted Strings:");
+   for(i=0;i<=count;i++)
+      puts(str[i]);
+    printf("enter strings you want to update ");
+   gets(delete1);
+printf("enter strings you want to put ");
+   gets(delete2);
+for(i=0;i<=count;i++){
+   if(strcmp(str[i],delete1)==0){
+    pos=i;
+    break;
+   }
+}
+for(int k=pos;k<=count-1;k++)
+  strcpy(str[k],str[k+1]);
+  strcpy(str[count],delete2);
+for(i=0;i<=count;i++)
+      for(j=i+1;j<=count;j++){
+         if(strcmp(str[i],str[j])>0){
+            strcpy(temp,str[i]);
+            strcpy(str[i],str[j]);
+            strcpy(str[j],temp);
+         }
+      }
+    printf("Order of Sorted Strings:");
+   for(i=0;i<=count;i++)
+      puts(str[i]);
+ printf("the total devices %d",count-1);   
+return 0;
+}
