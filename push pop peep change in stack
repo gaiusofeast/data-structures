@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<conio.h>
 struct Stack
 {
  int size;
@@ -19,7 +20,7 @@ void Display(struct Stack st)
  for(i=st.top;i>=0;i--)
  printf("%d ",st.S[i]);
  printf("\n");
- 
+
 }
 void push(struct Stack *st,int x)
 {
@@ -30,12 +31,12 @@ void push(struct Stack *st,int x)
  st->top++;
  st->S[st->top]=x;
  }
- 
+
 }
 int pop(struct Stack *st)
 {
  int x=-1;
- 
+
  if(st->top==-1)
  printf("Stack Underflow\n");
  else
@@ -50,7 +51,7 @@ int peek(struct Stack st,int index)
  if(st.top-index+1<0)
  printf("Invalid Index \n");
  x=st.S[st.top-index+1];
- 
+
  return x;
 }
 void change(struct Stack *st,int index2,int y)
@@ -58,22 +59,24 @@ void change(struct Stack *st,int index2,int y)
 if(st->top-index2+1<0)
  printf("Invalid Index \n");
  st->S[st->top-index2+1]=y;
-} 
+}
 
 int main()
 {
  struct Stack st;
+ clrscr();
  create(&st);
- 
+
  push(&st,10);
  push(&st,20);
  push(&st,30);
  push(&st,40);
+ printf("%d\n",pop(&st));
  change(&st,2,3);
  printf("%d \n",peek(st,2));
- 
- 
+
+
  Display(st);
- 
+ getch();
  return 0;
 }
