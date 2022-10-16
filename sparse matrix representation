@@ -1,6 +1,7 @@
-// C++ program for Sparse Matrix Representation
+
 // using Array
 #include<stdio.h>
+#include<conio.h>
 
 int main()
 {
@@ -25,6 +26,7 @@ int main()
 	};
 
 	int size = 0;
+	clrscr();
 	for (int i = 0; i < 14; i++)
 		for (int j = 0; j < 3; j++)
 			if (sparseMatrix[i][j] != 0)
@@ -54,5 +56,6 @@ int main()
 
 		printf("\n");
 	}
+	getch();
 	return 0;
 }
