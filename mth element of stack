@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Stack
+{
+  int size; 
+  int top;
+  int *S;
+};
+void create(struct Stack *st)
+{
+ printf("enter size");
+  scanf("%d",&st->size);
+st->top=-1;
+st->S=(int*)malloc(st->size*sizeof(int));
+}
+void Display(struct Stack st)
+{
+  int i;
+  for(i=st.top;i>=0;i--){
+  printf("%d",st.S[i]);
+  printf("\n");
+}
+ }
+void push(struct Stack *st,int x)
+{
+ if(st->top==st->size-1)
+printf("stack o verflow");
+else 
+{
+  st->top++;
+st->S[st->top]=x;
+}
+}
+int pop(struct Stack *st)
+{
+ int x=-1;
+ if(st->top==-1)
+ printf("Sastck iunderlfo");
+else
+{
+ x=st->S[st->top--];
+}
+return x;
+}
+int peek(struct Stack st,int position)
+{
+ int x=-1;
+ if(st.top-position+1<0)
+printf("invalid index\n");
+x=st.S[st.top-position+1];
+ return x;
+ }
+int main()
+{
+ int m;
+ struct Stack st ;
+ create(&st);
+push(&st,10);
+push (&st,20);
+push(&st,50);
+push(&st,70);
+push(&st,78);
+
+Display(st);
+printf("enter the value of m");
+scanf("%d",&m);
+for(int i=1;i<=m-1;i++)
+{
+ pop(&st);
+}
+printf(" the mth element is %d\n",peek(st,1));
+Display(st);               
+//printf("%d",peek(st,m));
+return 0;
+}
