@@ -1,0 +1,65 @@
+#include<stdio.h>
+struct Stack 
+{
+ int size ;
+ int top;
+ int *S;
+};
+ void create(struct Stack *st) 
+{printf("enter the damn size");
+ scanf("%d",&st->size);
+ st->top=-1;
+ st->S=(int *)malloc(st->size*sizeof(int));
+}
+
+
+void display(struct Stack st)
+{
+	int i;
+	for(i=st.top;i>=0;i--)
+	{
+		printf("%d",st.S[i]);
+		printf("\n");
+   
+	}
+}
+
+void push(struct Stack*st,int x)
+{
+ 	if(st->top==st->size-1)
+ 	{
+ 		printf("Stack overflow");
+ 		}
+ 		else{
+ 			 st->top++;
+ 			 st->S[st->top]=x;
+//printf("reached");
+ 			 }
+ 			 
+ 			  }
+ 			  
+void pop(struct Stack*st)
+{ int x;
+if(st->top==0)
+{ printf("Stack underflow");
+}
+else{ x=st->S[st->top];
+
+ 		st->top--;
+ 		printf(" popped elemeentrs are  %d",x);
+ printf("\n");
+
+}
+}
+
+ 
+ 	int main(){
+ 			   struct Stack st;
+ 			   create(&st);
+ 			   push(&st,20);
+ 			   push(&st,60);
+ 			   pop(&st);		    			  
+       display(st);
+return 0;
+ }			   
+	
