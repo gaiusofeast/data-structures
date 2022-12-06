@@ -38,7 +38,7 @@ void insert()
 printf("enter index");
 scanf("%d",&index);
 struct Node*p=first;
- if(index<0)
+ if(index<0||index>count())
  return ;
 printf("hgjg");
 printf("enter the number");
@@ -47,7 +47,7 @@ printf("ygu");
 t=(struct Node*)malloc(sizeof(struct Node));
 t->data=num;
 printf("mjnh");
-if(index==0)
+if(index==0 )
 {
  t->next=first;
  first=t;
@@ -74,20 +74,22 @@ while(ptr != NULL)
 //printf("fuck");
 }
 } 
-int  delete ()
+void delete ()
 { 
  int index,x,i;
 struct Node *q;
 struct Node*p=first;
  printf("enter the index");
 scanf("%d",&index);
-if(index==1)
+if(index<1||index>count())
+return ;
+if(index==1 )
 {
  q=first;
  x=first->data;
  first=first->next;
 free(q);
-return x;
+return ;
 }
 else{
 for(i=0;i<index-1;i++)
@@ -98,8 +100,19 @@ p=p->next;
 q->next=p->next;
 x=p->data;
 free(p);
-return x;
+
 }
+}
+int count()
+{
+ struct Node*x;
+ int l=0;
+ while(x)
+ {
+ l++;
+ x=x->next;
+ }
+ return l;
 }
  
 void main()
