@@ -1,0 +1,137 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+  int data;
+  struct node*next;
+}*first=NULL;
+
+ void create()
+
+{ int num;
+ printf("enter the number");
+ scanf("%d",&num);  
+  struct Node*t,*last;
+  first=(struct Node*)malloc(sizeof(struct Node));
+   first->data=num;
+   first->next=NULL;
+   last=first;
+ printf("enter the number");
+ scanf("%d",&num);
+
+ while(num!=-1)
+{
+    t=(struct Node*)malloc(sizeof(struct Node));
+ t->data=num;
+ t->next=NULL;
+last->next=t;
+last=t;
+printf("enter the number");
+ scanf("%d",&num);
+
+}
+}
+void insert()
+{ struct Node*t ;
+  int i,num,index;
+printf("enter index");
+scanf("%d",&index);
+struct Node*p=first;
+ if(index<0)
+ return ;
+printf("hgjg");
+printf("enter the number");
+scanf("%d",&num);
+printf("ygu");
+t=(struct Node*)malloc(sizeof(struct Node));
+t->data=num;
+printf("mjnh");
+if(index==0)
+{
+ t->next=first;
+ first=t;
+}
+else{
+printf("et");
+for(int i=0;i<index-1;i++)
+p=p->next;
+t->next=p->next;
+printf("reached");
+p->next=t;
+}
+}
+ 
+void display()
+{
+//printf("reached");
+struct Node *ptr;
+ptr =first;
+while(ptr != NULL)
+{
+ printf("\t %d", ptr->data);
+ ptr=ptr->next;
+//printf("fuck");
+}
+} 
+int  delete ()
+{ 
+ int index,x,i;
+struct Node *q;
+struct Node*p=first;
+ printf("enter the index");
+scanf("%d",&index);
+if(index==1)
+{
+ q=first;
+ x=first->data;
+ first=first->next;
+free(q);
+return x;
+}
+else{
+for(i=0;i<index-1;i++)
+{
+q=p;
+p=p->next;
+}
+q->next=p->next;
+x=p->data;
+free(p);
+return x;
+}
+}
+ 
+void main()
+{ /*create();
+   display();
+ delete();
+ display();
+}*/
+int option;
+
+ printf("1.create");
+ printf("2.insert");
+ printf("3.delete");
+ printf("4.display");
+printf("5.exit");
+printf("enter your option");
+scanf("%d",&option);
+while(option!=5)
+{
+switch(option)
+{
+ case 1: create();
+           break;
+ case 2: insert();
+           break;
+ case 3: delete();
+           break;
+        
+ case 4: display();
+          break;
+}
+printf("enter your optio");
+scanf("%d",&option);
+}
+}
