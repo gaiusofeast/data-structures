@@ -1,0 +1,155 @@
+#include<stdio.h>
+#include<conio.h>
+
+ struct node{
+    struct node* prev;
+    int data;
+    struct node* next;
+ }*first;
+  
+
+void create()
+{
+  struct node*t,*last;
+   int i,num;
+   printf("enter your number");
+   scanf("%d",&num);
+  t=(struct node*)malloc(sizeof(struct node));
+  t->data=num;
+  t->prev=NULL;
+  t->next=NULL;
+  first= t;
+  last=first;
+
+  printf("enter the number");
+   scanf("%d",&num);
+  while(num!=-1)
+
+{
+  t=(struct node*)malloc(sizeof(struct node));
+  t->data=num;
+ t->next=last->next;
+ t->prev=last;
+ last->next=t;
+ last =t; 
+
+ printf("enter the number");
+ scanf("%d",&num); 
+ }
+}
+
+
+ void delete()
+{ int num,x;
+ printf("enter the number");
+  scanf("%d",&num);
+ struct node*q;
+ struct node*p=first;
+for(int i=0;i<length();i++)
+{ 
+ if(p->data==num&&i==0)
+{ 
+ q=first; 
+ x=first->data;
+ first=first->next;
+if(first!=NULL)
+first->prev=NULL;
+ free(q);
+return;
+}
+
+q=p;
+p=p->next;
+if(p->data==num){
+q->next=p->next;
+if(p->next!=NULL)
+p->next->prev=q;
+x=p->data;
+free(p);
+}
+
+} 
+}   
+ 
+ 
+   void display()
+{
+//printf("reached");
+struct node *ptr=first;
+
+while(ptr != NULL)
+{
+ printf("\t %d", ptr->data);
+ ptr=ptr->next;
+
+} 
+}
+
+
+
+int length()
+{
+struct node* p=first;
+ int len=0;
+ while(p!=NULL)
+{
+  len++;
+  p=p->next;
+}
+ return len;
+}
+
+
+
+
+void insert()
+{ int num,index;
+ printf("%d",length());
+ printf("enter the number");
+  scanf("%d",&num);
+ struct node* p=first;
+ struct node* t;
+printf("enter the index bitch");
+scanf("%d",&index);
+ if(index<0||index>length())
+return;
+else if(index==0)
+{ 
+  t=(struct node*)malloc(sizeof(struct node)) ;
+   t->data=num;
+   t->prev=NULL;
+   t->next=first;
+   first->prev=t;
+  first=t;
+}
+else {
+       for(int i=0;i<index-1;i++)
+            p=p->next;
+            
+      t=(struct node*)malloc(sizeof(struct node));
+    
+      t->data=num;
+      t->prev=p;
+      t->next=p->next;
+    if(p->next!=NULL)
+    p->next->prev=t;
+    p->next=t;
+}
+}    
+       
+
+
+
+int main()
+{
+ create();
+//if(first==NULL)
+//printf("fuck");
+ display();
+insert();
+display();
+delete();
+display();
+}
+
+ 
