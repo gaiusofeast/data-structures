@@ -1,0 +1,105 @@
+#include<stdio.h>
+#include<stdlib.h>
+int count=0;
+ struct node{
+int data;
+struct node*next;
+}*head,*last,*q;
+
+void create()
+{
+ int num;
+ printf("enter the number");
+ scanf("%d",&num);
+struct node*t;
+//struct node*last;
+ t=(struct node*)malloc(sizeof(struct node));
+t->data=num;
+t->next=t;
+head=t;
+last=t;
+printf("enter the number");
+scanf("%d",&num);
+
+
+while(num!=-1)
+{
+  printf("kdjk");
+ t=(struct node*)malloc(sizeof(struct node));
+  t->data=num;
+  t->next=last->next; 
+  last->next=t;
+  last=t;
+printf("enter the number");
+scanf("%d",&num);
+}
+}
+void split()
+{
+   struct node*x=head;
+  for(int i=0;i<(count/2)-1;i++)
+{   x=x->next;
+}
+ q=x->next;
+ x->next=head;
+ last->next=q;
+}
+
+  
+
+  
+
+void display()
+{
+   struct node*x=head;
+
+  do{
+   printf("\t %d",x->data);
+   count++;
+   x=x->next;
+   
+}
+
+while(x!=head);
+printf("\n");
+printf("count is %d",count);
+printf("\n");
+}
+
+
+void Display()
+{
+   struct node*x=head;
+
+  do{
+   printf("\t %d",x->data);
+   count++;
+   x=x->next;
+   
+}
+while(x!=head);
+printf("\n second loist is");
+
+
+  struct node*w=q;
+
+  do{
+   printf("\t %d",w->data);
+   count++;
+   w=w->next;
+   
+}
+while(w!=q);
+
+}
+
+
+
+
+
+int main(){
+ create();
+  display();
+ split();
+ Display();
+}
